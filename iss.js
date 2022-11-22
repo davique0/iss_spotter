@@ -92,11 +92,7 @@ const nextISSTimesForMyLocation = (callback => {
       fetchISSFlyOverTimes(coords, (error, flyTimes) => {
         if (error) return callback(error, null);
         //converting the array of objects into readable dates, Unix Time to today's time
-        for (const date of flyTimes) {
-          const strDate = new Date(date.risetime * 1000).toString();
-          const msg = `Next pass at ${strDate} for ${date.duration} seconds!`;
-          callback(null, msg);
-        }
+        callback(null, flyTimes);
       });
     });
   });
